@@ -1,0 +1,27 @@
+{
+  "name": "hospitalbe",
+  "version": "1.0.0",
+  "description": "Repositorio para el API de un Hospital del curso de Angular avanzado de Fernando Herrera",
+  "main": "index.js",
+  "scripts": {
+    "start:dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jhonattanrgc21/hospitalBE.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jhonattanrgc21/hospitalBE/issues"
+  },
+  "homepage": "https://github.com/jhonattanrgc21/hospitalBE#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mongoose": "^7.1.1",
+    "nodemon": "^2.0.22"
+  }
+}
