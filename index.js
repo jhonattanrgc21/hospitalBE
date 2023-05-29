@@ -7,16 +7,14 @@ const PORT = process.env.PORT;
 const app = express();
 app.use(cors());
 
+// Lectura y parseo el body
+app.use(express.json())
+
 // Base de datos
 dbConecction();
 
 
 // Rutas
-app.get('/', (req, res) => {
-    res.json({
-        ok: true,
-        msg: 'Hola mundo'
-    })
-})
+app.use('/api/users', require('./routes/users.route'));
 
 app.listen(PORT, () => console.log('Server on porth: ', PORT));
