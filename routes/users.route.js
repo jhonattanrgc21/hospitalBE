@@ -5,11 +5,13 @@
 const { Router } = require('express');
 const {check} = require('express-validator');
 const { validateInputs } = require('../middlewares/validate-inputs')
-const { getUsers, createUser, updateUser } = require('../controllers/users.controller');
+const { getUsers, createUser, updateUser, deleteUser } = require('../controllers/users.controller');
+const { validateToken } = require('../middlewares/validateToken');
 
 const router = Router();
 
-router.get('/', getUsers);
+router.get('/', validateToken ,getUsers);
+
 router.post('/', [
     check('name', 'El nombre es olbligatorio').not().isEmpty(),
     check('password', 'El password es olbligatorio').not().isEmpty(),
@@ -23,5 +25,7 @@ router.put('/:id', [
     check('roles', 'El role es olbligatorio').not().isEmpty(),
     validateInputs
 ], updateUser);
+
+router.delete('/:id', deleteUser);
 
 module.exports = router;

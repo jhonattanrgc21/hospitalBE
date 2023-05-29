@@ -32,6 +32,11 @@ const User = Schema({
         default: false,
     }, 
 
+    isActive: {
+        type: Boolean,
+        default: true,
+    }
+
 })
 
 User.method('toJSON', function(){

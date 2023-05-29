@@ -31,9 +31,12 @@ const createUser = async (req, res = response) => {
 
         await user.save();
 
+        const token = await generateToken(user.id);
+
         res.json({
             ok: true,
-            user
+            user,
+            token
         })
     } catch (error) {
         console.log(error);
@@ -83,8 +86,36 @@ const updateUser = async (req, res = response) => {
     }
 }
 
+const deleteUser = async (req, res = response) => {
+    try {
+        const uid = req.params.id
+        const user = await User.findById(uid)
+
+        if(!user){
+            return res.status(404).json({
+                ok: false,
+                msg: 'Error, no existe un usuario con ese ID'
+            })
+        }
+
+        user.isActive = false
+        await User.findByIdAndUpdate(uid, user, { new: true});
+        res.json({
+            ok: true,
+            uid
+        })
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({
+            ok: false,
+            msg: 'Error, hable ocn el administrador'
+        })
+    }
+}
+
 module.exports = {
     getUsers,
     createUser,
-    updateUser
+    updateUser,
+    deleteUser
 }
