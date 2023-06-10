@@ -13,6 +13,7 @@ const router = Router();
 router.get('/', validateToken ,getUsers);
 
 router.post('/', [
+    validateToken,
     check('name', 'El nombre es olbligatorio').not().isEmpty(),
     check('password', 'El password es olbligatorio').not().isEmpty(),
     check('email', 'El email es olbligatorio').isEmail(),
@@ -26,6 +27,6 @@ router.put('/:id', [
     validateInputs
 ], updateUser);
 
-router.delete('/:id', deleteUser);
+router.delete('/:id', validateToken, deleteUser);
 
 module.exports = router;

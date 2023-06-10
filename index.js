@@ -17,5 +17,6 @@ dbConecction();
 // Rutas
 app.use('/api/users', require('./routes/users.route'));
 app.use('/api/auth', require('./routes/auth.route'));
+app.use('/api/hospital', require('./routes/hospital.route'));
 
 app.listen(PORT, () => console.log('Server on porth: ', PORT));

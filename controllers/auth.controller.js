@@ -8,7 +8,6 @@ const login = async (req, res = response) => {
         const { email, password } = req.body;
         const user = await User.findOne({email});
 
-        console.log(user)
         if(!user){
             res.status(404).json({
                 ok: false,
